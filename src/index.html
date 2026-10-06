@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <title>Alex Carter — Full-Stack Software Engineer | .NET • Angular • SQL Server</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- SEO -->
+  <meta name="description" content="Portfolio of Alex Carter, a full-stack software engineer building scalable web applications with ASP.NET Core, Angular and SQL Server.">
+  <meta name="author" content="Alex Carter">
+  <meta name="keywords" content="software engineer, .NET developer, ASP.NET Core, Angular, SQL Server, C#, TypeScript, full-stack developer, portfolio">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://alexcarter.dev/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Alex Carter — Full-Stack Software Engineer">
+  <meta property="og:description" content="Full-stack software engineer specializing in .NET, Angular and SQL Server.">
+  <meta property="og:url" content="https://alexcarter.dev/">
+  <meta property="og:site_name" content="Alex Carter Portfolio">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Alex Carter — Full-Stack Software Engineer">
+  <meta name="twitter:description" content="Full-stack software engineer specializing in .NET, Angular and SQL Server.">
+
+  <meta name="theme-color" content="#7c3aed">
+
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Fonts: preconnect + display=swap for fast, non-blocking loading -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap">
+
+  <script>
+    // Apply the saved theme before Angular boots to avoid a flash of the wrong theme.
+    (function () {
+      try {
+        var saved = localStorage.getItem('portfolio-theme');
+        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var theme = saved || (prefersDark ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    })();
+  </script>
+</head>
+<body>
+  <app-root></app-root>
+  <noscript>
+    <p style="padding: 2rem; font-family: sans-serif;">
+      This portfolio requires JavaScript to run. Please enable it, or reach me at
+      <a href="mailto:fazlamijotosob@gmail.com">fazlamijotosob@gmail.com</a>.
+    </p>
+  </noscript>
+</body>
+</html>

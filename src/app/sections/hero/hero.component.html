@@ -1,0 +1,89 @@
+<section class="hero" id="top" aria-labelledby="hero-title">
+  <div class="hero__bg" aria-hidden="true">
+    <span class="hero__orb hero__orb--1"></span>
+    <span class="hero__orb hero__orb--2"></span>
+    <span class="hero__grid"></span>
+  </div>
+
+  <div class="container hero__inner">
+    <div class="hero__content">
+      <p class="hero__status" appReveal>
+        @if (profile.availableForWork) {
+          <span class="hero__dot" aria-hidden="true"></span>
+          Available for new opportunities
+        } @else {
+          Currently fully engaged
+        }
+      </p>
+
+      <h1 class="hero__title" id="hero-title" appReveal style="--reveal-delay: 80ms">
+        Hi, I'm <span class="hero__name">{{ profile.name }}</span>
+      </h1>
+
+      <p class="hero__role" appReveal style="--reveal-delay: 160ms">{{ profile.title }}</p>
+
+      <p class="hero__tagline" appReveal style="--reveal-delay: 240ms">{{ profile.tagline }}</p>
+
+      <div class="hero__actions" appReveal style="--reveal-delay: 320ms">
+        <a class="btn btn--primary" [href]="profile.resumeUrl" download>
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 3v12" />
+            <path d="m7 11 5 5 5-5" />
+            <path d="M5 21h14" />
+          </svg>
+          Download CV
+        </a>
+        <a class="btn btn--ghost" href="#contact">
+          Contact Me
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 12h14" />
+            <path d="m13 6 6 6-6 6" />
+          </svg>
+        </a>
+      </div>
+
+      <dl class="hero__stats" appReveal style="--reveal-delay: 400ms">
+        @for (stat of stats; track stat.label) {
+          <div class="hero__stat">
+            <dt>{{ stat.label }}</dt>
+            <dd>{{ stat.value }}</dd>
+          </div>
+        }
+      </dl>
+    </div>
+
+    <div class="hero__art" appReveal style="--reveal-delay: 260ms" aria-hidden="true">
+      <div class="code-card">
+        <div class="code-card__bar">
+          <span class="code-card__dot"></span>
+          <span class="code-card__dot"></span>
+          <span class="code-card__dot"></span>
+          <span class="code-card__file">OrderService.cs</span>
+        </div>
+        <pre class="code-card__body"><code><span class="tok-k">public class</span> <span class="tok-t">OrderService</span>
+  : <span class="tok-t">IOrderService</span>
+&#123;
+  <span class="tok-k">public async</span> <span class="tok-t">Task</span>&lt;<span class="tok-t">OrderDto</span>&gt; <span class="tok-f">GetAsync</span>(<span class="tok-t">int</span> id)
+  &#123;
+    <span class="tok-k">return await</span> _db.Orders
+      .<span class="tok-f">AsNoTracking</span>()
+      .<span class="tok-f">Where</span>(o =&gt; o.Id == id)
+      .<span class="tok-f">ProjectTo</span>&lt;<span class="tok-t">OrderDto</span>&gt;()
+      .<span class="tok-f">SingleAsync</span>();
+  &#125;
+&#125;</code></pre>
+      </div>
+
+      <div class="badge badge--sql">
+        <span class="badge__k">SELECT</span> <span class="badge__v">12ms</span>
+      </div>
+      <div class="badge badge--ng">
+        <span class="badge__k">ng build</span> <span class="badge__v">✓ 1.2s</span>
+      </div>
+    </div>
+  </div>
+
+  <a class="hero__scroll" href="#about" aria-label="Scroll to About section">
+    <span aria-hidden="true"></span>
+  </a>
+</section>

@@ -1,0 +1,109 @@
+.certs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: clamp(1rem, 2.5vw, 1.4rem);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cert {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: var(--surface-solid);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition),
+    border-color var(--transition);
+}
+
+.cert:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow);
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
+}
+
+.cert__seal {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--accent) 13%, transparent);
+  color: var(--accent);
+  transition: transform var(--transition);
+}
+
+.cert:hover .cert__seal {
+  transform: rotate(12deg) scale(1.06);
+}
+
+.cert__seal svg {
+  width: 24px;
+  height: 24px;
+}
+
+.cert__body {
+  min-width: 0;
+  flex: 1;
+}
+
+.cert__issuer {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-faint);
+  margin-bottom: 0.2rem;
+}
+
+.cert__name {
+  font-size: 0.99rem;
+  line-height: 1.35;
+  margin-bottom: 0.3rem;
+}
+
+.cert__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.79rem;
+  color: var(--text-muted);
+}
+
+.cert__id {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--accent-text);
+}
+
+.cert__sep {
+  color: var(--text-faint);
+}
+
+.cert__link {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  border-radius: 9px;
+  border: 1px solid var(--border);
+  color: var(--text-faint);
+  transition:
+    color var(--transition),
+    border-color var(--transition),
+    background-color var(--transition);
+}
+
+.cert__link:hover {
+  color: #fff;
+  background: var(--accent);
+  border-color: var(--accent);
+}

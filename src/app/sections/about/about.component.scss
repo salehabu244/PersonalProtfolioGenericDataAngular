@@ -1,0 +1,130 @@
+.about {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 3.5rem);
+  align-items: start;
+}
+
+.about__text p {
+  color: var(--text-muted);
+  font-size: 1.03rem;
+  margin-bottom: 1.15rem;
+}
+
+.about__text p:first-of-type {
+  font-size: 1.12rem;
+  color: var(--text);
+}
+
+.about__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  list-style: none;
+  padding: 0;
+  margin: 1.75rem 0 2rem;
+}
+
+.about__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+/* ---------- Side panel ---------- */
+
+.about__panel {
+  display: grid;
+  gap: 1rem;
+}
+
+.panel-card {
+  background: var(--surface-solid);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.panel-card__title {
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent-text);
+  margin-bottom: 1.1rem;
+}
+
+.panel-card__list {
+  display: grid;
+  gap: 0.9rem;
+  margin: 0;
+}
+
+.panel-card__list > div {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 0.75rem;
+  align-items: baseline;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px dashed var(--border);
+}
+
+.panel-card__list > div:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.panel-card__list dt {
+  font-size: 0.82rem;
+  color: var(--text-faint);
+}
+
+.panel-card__list dd {
+  margin: 0;
+  font-size: 0.92rem;
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+
+.link {
+  color: var(--accent-text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: color-mix(in srgb, var(--accent) 40%, transparent);
+  transition: text-decoration-color var(--transition);
+}
+
+.link:hover {
+  text-decoration-color: var(--accent);
+}
+
+.panel-card--accent {
+  background: var(--gradient);
+  border-color: transparent;
+  box-shadow: 0 16px 36px var(--glow);
+}
+
+.panel-card__quote {
+  color: #fff;
+  font-size: 1.02rem;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+  .about {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .panel-card__list > div {
+    grid-template-columns: 1fr;
+    gap: 0.15rem;
+  }
+
+  .about__actions .btn {
+    width: 100%;
+  }
+}

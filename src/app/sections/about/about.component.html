@@ -1,0 +1,63 @@
+<section class="section section--alt" id="about" aria-labelledby="about-title">
+  <div class="container">
+    <app-section-head
+      eyebrow="About me"
+      title="Engineering that holds up in production"
+      lead="Where I've been, what I work with, and how I approach software."
+      [headingId]="'about-title'"
+    />
+
+    <div class="about">
+      <div class="about__text" appReveal>
+        @for (paragraph of about.summary; track paragraph) {
+          <p>{{ paragraph }}</p>
+        }
+
+        <ul class="about__tags" aria-label="Working principles">
+          @for (interest of about.interests; track interest) {
+            <li class="chip">{{ interest }}</li>
+          }
+        </ul>
+
+        <div class="about__actions">
+          <a class="btn btn--primary" [href]="profile.resumeUrl" download>Download CV</a>
+          <a class="btn btn--ghost" href="#contact">Get in touch</a>
+        </div>
+      </div>
+
+      <div class="about__panel" appReveal style="--reveal-delay: 140ms">
+        <div class="panel-card">
+          <h3 class="panel-card__title">Quick facts</h3>
+          <dl class="panel-card__list">
+            <div>
+              <dt>Location</dt>
+              <dd>{{ profile.location }}</dd>
+            </div>
+            <div>
+              <dt>Focus</dt>
+              <dd>.NET · Angular · SQL Server</dd>
+            </div>
+            <div>
+              <dt>Email</dt>
+              <dd><a class="link" [href]="'mailto:' + profile.email">{{ profile.email }}</a></dd>
+            </div>
+            <div>
+              <dt>Response time</dt>
+              <dd>Within 24 hours</dd>
+            </div>
+            <div>
+              <dt>Languages</dt>
+              <dd>Arabic (native), English (professional)</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="panel-card panel-card--accent">
+          <p class="panel-card__quote">
+            “Good code is code a teammate can change without asking you first.”
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

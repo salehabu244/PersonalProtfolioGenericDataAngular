@@ -1,0 +1,48 @@
+<section class="section section--alt" id="certifications" aria-labelledby="certifications-title">
+  <div class="container">
+    <app-section-head
+      eyebrow="Certifications"
+      title="Verified credentials"
+      lead="Formal qualifications backing up the hands-on work."
+      [center]="true"
+      [headingId]="'certifications-title'"
+    />
+
+    <ul class="certs">
+      @for (cert of certifications; track cert.id; let i = $index) {
+        <li class="cert" appReveal [style.--reveal-delay]="i * 90 + 'ms'">
+          <span class="cert__seal" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2.5 14.6 8l6 .87-4.35 4.24 1.03 6L12 16.4l-5.28 2.7 1.03-6L3.4 8.87 9.4 8z" />
+              <path d="M9 20.5l1.5-2.5L9 15.5M15 20.5l-1.5-2.5 1.5-2.5" />
+            </svg>
+          </span>
+
+          <div class="cert__body">
+            <p class="cert__issuer">{{ cert.issuer }}</p>
+            <h3 class="cert__name">{{ cert.name }}</h3>
+            <p class="cert__meta">
+              <span class="cert__id">{{ cert.id }}</span>
+              <span class="cert__sep" aria-hidden="true">·</span>
+              <time>{{ cert.year }}</time>
+            </p>
+          </div>
+
+          <a
+            class="cert__link"
+            [href]="cert.credential"
+            target="_blank"
+            rel="noopener noreferrer"
+            [attr.aria-label]="'Verify credential for ' + cert.name + ' (opens in a new tab)'"
+          >
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M15 3h6v6" />
+              <path d="M10 14 21 3" />
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+            </svg>
+          </a>
+        </li>
+      }
+    </ul>
+  </div>
+</section>

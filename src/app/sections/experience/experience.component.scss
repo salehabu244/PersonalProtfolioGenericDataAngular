@@ -1,0 +1,175 @@
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+/* Continuous rail down the left edge */
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 9px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--accent), var(--accent-2) 55%, transparent);
+  opacity: 0.45;
+}
+
+.timeline__item {
+  position: relative;
+  padding-left: 3rem;
+  padding-bottom: clamp(1.75rem, 4vw, 2.75rem);
+}
+
+.timeline__item:last-child {
+  padding-bottom: 0;
+}
+
+.timeline__marker {
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--bg-alt);
+  border: 3px solid var(--accent);
+  box-shadow: 0 0 0 5px color-mix(in srgb, var(--accent) 16%, transparent);
+  transition: transform var(--transition);
+}
+
+.timeline__item:hover .timeline__marker {
+  transform: scale(1.15);
+}
+
+/* ---------- Job card ---------- */
+
+.job {
+  background: var(--surface-solid);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition),
+    border-color var(--transition);
+}
+
+.job:hover {
+  transform: translateX(4px);
+  box-shadow: var(--shadow);
+  border-color: color-mix(in srgb, var(--accent) 35%, var(--border));
+}
+
+.job__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem 1rem;
+  margin-bottom: 0.85rem;
+}
+
+.job__role {
+  font-size: clamp(1.1rem, 2.2vw, 1.28rem);
+  margin-bottom: 0.25rem;
+}
+
+.job__company {
+  font-size: 0.93rem;
+  font-weight: 600;
+  color: var(--accent-text);
+}
+
+.job__sep {
+  color: var(--text-faint);
+}
+
+.job__location {
+  color: var(--text-faint);
+  font-weight: 500;
+}
+
+.job__period {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.32rem 0.75rem;
+  white-space: nowrap;
+}
+
+.job__summary {
+  color: var(--text-muted);
+  font-size: 0.97rem;
+  margin-bottom: 1rem;
+}
+
+.job__achievements {
+  list-style: none;
+  margin: 0 0 1.15rem;
+  padding: 0;
+  display: grid;
+  gap: 0.65rem;
+}
+
+.job__achievements li {
+  display: flex;
+  gap: 0.65rem;
+  align-items: flex-start;
+  font-size: 0.94rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.job__achievements svg {
+  flex-shrink: 0;
+  margin-top: 0.32rem;
+  color: var(--ok);
+}
+
+.job__stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  list-style: none;
+  padding: 1rem 0 0;
+  margin: 0;
+  border-top: 1px solid var(--border);
+}
+
+.job__stack li {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  background: color-mix(in srgb, var(--accent) 9%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 22%, transparent);
+  border-radius: 7px;
+  padding: 0.22rem 0.55rem;
+}
+
+@media (max-width: 560px) {
+  .timeline__item {
+    padding-left: 2.25rem;
+  }
+
+  .timeline::before {
+    left: 6px;
+  }
+
+  .timeline__marker {
+    width: 15px;
+    height: 15px;
+    border-width: 2.5px;
+  }
+
+  .job__period {
+    white-space: normal;
+  }
+}

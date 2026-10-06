@@ -1,0 +1,51 @@
+<section class="section section--alt" id="experience" aria-labelledby="experience-title">
+  <div class="container">
+    <app-section-head
+      eyebrow="Experience"
+      title="Where I've made an impact"
+      lead="Roles, responsibilities and the measurable results behind them."
+      [headingId]="'experience-title'"
+    />
+
+    <ol class="timeline">
+      @for (job of experience; track job.company + job.period; let i = $index) {
+        <li class="timeline__item" appReveal [style.--reveal-delay]="i * 110 + 'ms'">
+          <span class="timeline__marker" aria-hidden="true"></span>
+
+          <article class="job">
+            <header class="job__head">
+              <div>
+                <h3 class="job__role">{{ job.role }}</h3>
+                <p class="job__company">
+                  {{ job.company }}
+                  <span class="job__sep" aria-hidden="true">·</span>
+                  <span class="job__location">{{ job.location }}</span>
+                </p>
+              </div>
+              <time class="job__period">{{ job.period }}</time>
+            </header>
+
+            <p class="job__summary">{{ job.summary }}</p>
+
+            <ul class="job__achievements">
+              @for (point of job.achievements; track point) {
+                <li>
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="m5 12 5 5L20 7" />
+                  </svg>
+                  <span>{{ point }}</span>
+                </li>
+              }
+            </ul>
+
+            <ul class="job__stack" aria-label="Technologies used">
+              @for (tech of job.stack; track tech) {
+                <li>{{ tech }}</li>
+              }
+            </ul>
+          </article>
+        </li>
+      }
+    </ol>
+  </div>
+</section>

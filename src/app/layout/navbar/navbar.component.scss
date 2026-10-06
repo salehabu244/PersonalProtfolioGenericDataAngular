@@ -1,0 +1,255 @@
+.header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 100;
+  transition:
+    background-color var(--transition),
+    border-color var(--transition),
+    backdrop-filter var(--transition);
+  border-bottom: 1px solid transparent;
+}
+
+.header--scrolled {
+  background: var(--header-bg);
+  backdrop-filter: saturate(180%) blur(14px);
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
+  border-bottom-color: var(--border);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  height: 72px;
+}
+
+/* ---------- Brand ---------- */
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.brand__mark {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 11px;
+  background: var(--gradient);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  box-shadow: 0 6px 18px var(--glow);
+}
+
+.brand__name {
+  font-size: 1.02rem;
+}
+
+/* ---------- Nav ---------- */
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-inline-start: auto;
+}
+
+.nav__link {
+  position: relative;
+  padding: 0.5rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  transition:
+    color var(--transition),
+    background-color var(--transition);
+}
+
+.nav__link:hover {
+  color: var(--text);
+  background: var(--border);
+}
+
+.nav__link--active {
+  color: var(--accent-text);
+  font-weight: 600;
+}
+
+.nav__link--active::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 2px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  transform: translateX(-50%);
+}
+
+.nav__cta {
+  margin-inline-start: 0.6rem;
+  padding: 0.6rem 1.25rem;
+  font-size: 0.9rem;
+}
+
+/* ---------- Actions ---------- */
+
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.icon-btn {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-muted);
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition:
+    color var(--transition),
+    border-color var(--transition),
+    transform var(--transition),
+    background-color var(--transition);
+}
+
+.icon-btn:hover {
+  color: var(--accent-text);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.burger {
+  display: none;
+}
+
+.burger__line,
+.burger__line::before,
+.burger__line::after {
+  display: block;
+  width: 17px;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+  transition: transform var(--transition), opacity var(--transition);
+}
+
+.burger__line {
+  position: relative;
+}
+
+.burger__line::before,
+.burger__line::after {
+  content: '';
+  position: absolute;
+  left: 0;
+}
+
+.burger__line::before {
+  top: -6px;
+}
+
+.burger__line::after {
+  top: 6px;
+}
+
+.burger__line.is-open {
+  background: transparent;
+}
+
+.burger__line.is-open::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+
+.burger__line.is-open::after {
+  top: 0;
+  transform: rotate(-45deg);
+}
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 900px) {
+  .burger {
+    display: grid;
+  }
+
+  .nav {
+    position: fixed;
+    inset: 72px 0 auto;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.25rem;
+    padding: 1rem clamp(1.25rem, 4vw, 2rem) 1.5rem;
+    background: var(--header-bg);
+    backdrop-filter: saturate(180%) blur(16px);
+    -webkit-backdrop-filter: saturate(180%) blur(16px);
+    border-bottom: 1px solid var(--border);
+    transform: translateY(-140%);
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      transform var(--transition),
+      opacity var(--transition),
+      /* Only flip to hidden once the slide/fade has finished. */
+      visibility 0s linear var(--transition);
+  }
+
+  .nav--open {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    transition:
+      transform var(--transition),
+      opacity var(--transition),
+      /* Reveal immediately so the entrance animation is visible. */
+      visibility 0s linear 0s;
+  }
+
+  .nav__link {
+    padding: 0.85rem 0.9rem;
+    font-size: 1rem;
+    border-radius: 12px;
+  }
+
+  .nav__link--active::after {
+    display: none;
+  }
+
+  .nav__link--active {
+    background: var(--border);
+  }
+
+  .nav__cta {
+    margin: 0.75rem 0 0;
+    width: 100%;
+  }
+
+  .brand__name {
+    /* Keep the full name in the accessible name on small screens instead of
+       removing it, so the link is not announced as just "AC". */
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+  }
+}
